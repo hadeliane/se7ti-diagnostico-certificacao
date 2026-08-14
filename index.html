@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="api-base-url" content="https://uxxlidvrbyyrolwnvplr.supabase.co/functions/v1">
+  <title>Diagnóstico TOGAF® | SE7Ti</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="intro" class="panel screen">
+      <p class="eyebrow">Diagnóstico profissional</p>
+      <h1>A Certificação TOGAF® faz sentido para a sua carreira?</h1>
+      <p class="lead">Responda a 7 perguntas rápidas e descubra quanto uma formação sobre o Padrão TOGAF® e a Certificação TOGAF® fazem sentido para o seu momento profissional.</p>
+      <div class="dimensions">
+        <article><h2>Aplicação na atuação atual</h2><p>Quanto esse conhecimento pode ajudar no trabalho que você já faz.</p></article>
+        <article><h2>Evolução de carreira</h2><p>Quanto ele combina com o lugar para onde você quer levar sua carreira.</p></article>
+        <article><h2>Reconhecimento profissional</h2><p>Quanto uma credencial pode ajudar a tornar seu conhecimento mais visível.</p></article>
+      </div>
+      <p class="meta">7 perguntas • cerca de 3 minutos • resultado por e-mail</p>
+      <button id="start" class="primary">Fazer meu diagnóstico →</button>
+    </section>
+
+    <section id="question" class="panel screen" hidden>
+      <header class="progress-header"><p id="counter" class="eyebrow"></p><progress id="progress" max="7"></progress></header>
+      <form id="question-form">
+        <fieldset><legend id="question-text"></legend><div id="answers" class="answers"></div></fieldset>
+        <p id="question-error" class="message error" aria-live="polite"></p>
+        <div class="actions"><button type="button" id="back" class="secondary">Voltar</button><button class="primary">Continuar</button></div>
+      </form>
+    </section>
+
+    <section id="email" class="panel screen" hidden>
+      <p class="eyebrow">Quase lá</p><h1>Pronto! Seu diagnóstico já pode ser calculado. 🎯</h1>
+      <p class="lead">Falta só dizer para onde devemos enviar o resultado.</p>
+      <p>Você receberá uma análise do seu momento em três dimensões:</p>
+      <ul><li>Aplicação na atuação atual</li><li>Evolução de carreira</li><li>Reconhecimento profissional</li></ul>
+      <form id="email-form"><label for="email-input">E-mail</label><input id="email-input" name="email" type="email" maxlength="254" required autocomplete="email" placeholder="seuemail@empresa.com.br"><p class="hint">Seu resultado será enviado para este endereço. Confira se o e-mail foi digitado corretamente.</p><p id="email-error" class="message error" aria-live="polite"></p><div class="actions"><button type="button" id="email-back" class="secondary">Voltar</button><button class="primary">Receber meu diagnóstico →</button></div></form>
+    </section>
+
+    <section id="processing" class="panel screen centered" hidden aria-live="polite"><div class="spinner" aria-hidden="true"></div><h1>Fazendo as contas...</h1><p>Estamos juntando as peças das suas respostas.</p></section>
+    <section id="failure" class="panel screen centered" hidden><h1>Ops, alguma coisa não deu certo.</h1><p>Suas respostas continuam aqui. Tente enviar novamente.</p><button id="retry" class="primary">Tentar novamente</button></section>
+
+    <section id="success" class="panel screen" hidden>
+      <h1>Foi! ✉️</h1><p>Enviamos seu diagnóstico para:</p><p><a id="sent-email" class="sent-email"></a></p>
+      <p>Lá você vai encontrar seu resultado nas três dimensões:</p><ul><li>Aplicação na atuação atual</li><li>Evolução de carreira</li><li>Reconhecimento profissional</li></ul>
+      <p>Não encontrou? Vale dar uma olhadinha também no spam ou na pasta de promoções.</p>
+      <div class="actions stacked"><button id="change-email" class="secondary">Corrigir meu e-mail</button><button id="send-again" class="primary">Reenviar diagnóstico</button></div>
+      <form id="change-form" class="change-form" hidden><label for="new-email">E-mail correto</label><input id="new-email" type="email" maxlength="254" required autocomplete="email"><button class="primary">Salvar e reenviar</button></form>
+      <p id="action-message" class="message" aria-live="polite"></p>
+    </section>
+  </main>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
