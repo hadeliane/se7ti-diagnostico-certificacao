@@ -9,34 +9,76 @@
 </head>
 <body>
   <main class="shell">
-    <section id="intro" class="panel screen">
-      <p class="eyebrow">Diagnóstico profissional</p>
-      <h1>A Certificação TOGAF® faz sentido para a sua carreira?</h1>
-      <p class="lead">Responda a 7 perguntas rápidas e descubra quanto uma formação sobre o Padrão TOGAF® e a Certificação TOGAF® fazem sentido para o seu momento profissional.</p>
-      <div class="dimensions">
-        <article><h2>Aplicação na atuação atual</h2><p>Quanto esse conhecimento pode ajudar no trabalho que você já faz.</p></article>
-        <article><h2>Evolução de carreira</h2><p>Quanto ele combina com o lugar para onde você quer levar sua carreira.</p></article>
-        <article><h2>Reconhecimento profissional</h2><p>Quanto uma credencial pode ajudar a tornar seu conhecimento mais visível.</p></article>
+    <section id="intro" class="panel screen intro-screen">
+      <header class="intro-header">
+        <img class="brand-logo" src="assets/email/logo-se7ti.png" alt="SE7Ti" width="319" height="150">
+        <p class="eyebrow">Diagnóstico profissional</p>
+        <h1>A Certificação TOGAF® faz sentido para a sua carreira?</h1>
+        <p class="lead">Responda 7 perguntas rápidas e descubra como uma formação sobre o Padrão TOGAF® e a Certificação TOGAF® se conectam com o seu momento profissional.</p>
+      </header>
+
+      <div class="dimensions" aria-label="Aspectos analisados pelo diagnóstico">
+        <article class="dimension-card">
+          <img class="dimension-icon" src="assets/email/icone-trabalho.png" alt="" width="64" height="64">
+          <div><h2>No seu trabalho hoje</h2><p>Como esse conhecimento pode ajudar no trabalho que você já faz.</p></div>
+        </article>
+        <article class="dimension-card">
+          <img class="dimension-icon" src="assets/email/icone-carreira.png" alt="" width="64" height="64">
+          <div><h2>Para onde sua carreira está indo</h2><p>Como essa formação combina com os próximos passos que você quer dar.</p></div>
+        </article>
+        <article class="dimension-card">
+          <img class="dimension-icon" src="assets/email/icone-reconhecimento.png" alt="" width="64" height="64">
+          <div><h2>Seu reconhecimento profissional</h2><p>Como esse conhecimento pode fortalecer a forma como sua experiência é percebida.</p></div>
+        </article>
       </div>
-      <p class="meta">7 perguntas • cerca de 3 minutos • resultado por e-mail</p>
-      <button id="start" class="primary">Fazer meu diagnóstico →</button>
+
+      <div class="intro-footer">
+        <p class="meta"><span class="meta-icon" aria-hidden="true">◷</span> 7 perguntas <span aria-hidden="true">•</span> cerca de 3 minutos</p>
+        <button id="start" class="primary intro-cta">Fazer meu diagnóstico →</button>
+      </div>
     </section>
 
-    <section id="question" class="panel screen" hidden>
-      <header class="progress-header"><p id="counter" class="eyebrow"></p><progress id="progress" max="7"></progress></header>
+    <section id="question" class="panel screen question-screen" hidden>
+      <img class="question-logo" src="assets/email/logo-se7ti.png" alt="SE7Ti" width="319" height="150">
+      <header class="progress-header"><p id="counter" class="eyebrow"></p><progress id="progress" max="7" aria-label="Progresso do diagnóstico"></progress></header>
       <form id="question-form">
         <fieldset><legend id="question-text"></legend><div id="answers" class="answers"></div></fieldset>
         <p id="question-error" class="message error" aria-live="polite"></p>
-        <div class="actions"><button type="button" id="back" class="secondary">Voltar</button><button class="primary">Continuar</button></div>
+        <div class="actions question-actions"><button type="button" id="back" class="secondary">← Voltar</button><button class="primary">Continuar →</button></div>
       </form>
     </section>
 
-    <section id="email" class="panel screen" hidden>
-      <p class="eyebrow">Quase lá</p><h1>Pronto! Seu diagnóstico já pode ser calculado. 🎯</h1>
-      <p class="lead">Falta só dizer para onde devemos enviar o resultado.</p>
-      <p>Você receberá uma análise do seu momento em três dimensões:</p>
-      <ul><li>Aplicação na atuação atual</li><li>Evolução de carreira</li><li>Reconhecimento profissional</li></ul>
-      <form id="email-form"><label for="email-input">E-mail</label><input id="email-input" name="email" type="email" maxlength="254" required autocomplete="email" placeholder="seuemail@empresa.com.br"><p class="hint">Seu resultado será enviado para este endereço. Confira se o e-mail foi digitado corretamente.</p><p id="email-error" class="message error" aria-live="polite"></p><div class="actions"><button type="button" id="email-back" class="secondary">Voltar</button><button class="primary">Receber meu diagnóstico →</button></div></form>
+    <section id="email" class="panel screen email-screen" hidden>
+      <img class="email-logo" src="assets/email/logo-se7ti.png" alt="SE7Ti" width="319" height="150">
+      <header class="email-header">
+        <p class="eyebrow">Quase lá</p>
+        <h1>Suas respostas mostram como a Certificação TOGAF® se encaixa no seu momento profissional.</h1>
+        <p class="lead">Informe seu e-mail para receber a sua análise.</p>
+      </header>
+
+      <p class="email-aspects-intro">Ela considera três aspectos do seu momento profissional:</p>
+      <div class="delivery-dimensions" role="list" aria-label="Aspectos considerados na análise">
+        <article role="listitem">
+          <img src="assets/email/icone-trabalho.png" alt="" width="52" height="52">
+          <h2>No seu trabalho hoje</h2>
+        </article>
+        <article role="listitem">
+          <img src="assets/email/icone-carreira.png" alt="" width="52" height="52">
+          <h2>Para onde sua carreira está indo</h2>
+        </article>
+        <article role="listitem">
+          <img src="assets/email/icone-reconhecimento.png" alt="" width="52" height="52">
+          <h2>Seu reconhecimento profissional</h2>
+        </article>
+      </div>
+
+      <form id="email-form" class="email-form">
+        <label for="email-input">E-mail</label>
+        <input id="email-input" name="email" type="email" maxlength="254" required autocomplete="email" placeholder="seuemail@empresa.com.br">
+        <p class="hint">Seu resultado será enviado para este endereço. Confira se o e-mail foi digitado corretamente.</p>
+        <p id="email-error" class="message error" aria-live="polite"></p>
+        <div class="actions"><button type="button" id="email-back" class="secondary">Voltar</button><button class="primary">Receber meu diagnóstico →</button></div>
+      </form>
     </section>
 
     <section id="processing" class="panel screen centered" hidden aria-live="polite"><div class="spinner" aria-hidden="true"></div><h1>Fazendo as contas...</h1><p>Estamos juntando as peças das suas respostas.</p></section>
