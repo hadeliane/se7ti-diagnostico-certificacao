@@ -2,6 +2,7 @@ const form = document.getElementById("course-interest-form");
 const success = document.getElementById("interest-success");
 const submitButton = document.getElementById("submit-interest");
 const formError = document.getElementById("form-error");
+const notificationWarning = document.getElementById("interest-notification-warning");
 const configuredBase = document.querySelector('meta[name="api-base-url"]')?.content?.replace(/\/$/, "") || "/api";
 const apiBase = ["127.0.0.1", "localhost"].includes(location.hostname) ? "/api" : configuredBase;
 
@@ -44,9 +45,17 @@ form.addEventListener("submit", async (event) => {
     const response = await fetch(`${apiBase}/submit-course-interest`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload) });
     const result = await response.json().catch(() => ({}));
     if (!response.ok || result.success !== true) throw Object.assign(new Error(result.code || "REQUEST_FAILED"), { status: response.status });
+    if (notificationWarning) notificationWarning.hidden = result.notificationSent !== false;
     form.hidden = true; success.hidden = false; success.querySelector("h2").focus?.(); success.scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (error) {
     console.error("Course interest submission failed", { code: error.message, status: error.status });
-    formError.textContent = error.message === "RATE_LIMITED" ? "Recebemos várias tentativas em pouco tempo. Aguarde um pouco e tente novamente." : error.message === "INVALID_PAYLOAD" ? "Confira os dados informados e tente novamente." : "Não foi possível enviar agora. Seus dados continuam preenchidos; tente novamente em instantes.";
-  } finally { submitButton.disabled = false; submitButton.textContent = "Enviar meus dados"; }
+    const messages = {
+      RATE_LIMITED: "Recebemos várias tentativas em pouco tempo. Aguarde alguns minutos e tente novamente.",
+      RATE_LIMIT_UNAVAILABLE: "Não conseguimos verificar o envio agora. Aguarde alguns instantes e tente novamente.",
+      INVALID_PAYLOAD: "Alguns dados não puderam ser validados. Confira os campos e tente novamente.",
+      STORAGE_FAILED: "Não conseguimos salvar seus dados agora. Nenhuma solicitação foi registrada. Aguarde alguns instantes e tente novamente.",
+      SERVICE_UNAVAILABLE: "Nosso serviço de inscrição está temporariamente indisponível. Seus dados continuam preenchidos; tente novamente em alguns instantes.",
+    };
+    formError.textContent = messages[error.message] || "Não conseguimos confirmar se seus dados foram registrados. Aguarde alguns instantes e tente novamente.";
+  } finally { submitButton.disabled = false; submitButton.textContent = "Solicitar minha inscrição"; }
 });

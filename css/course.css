@@ -133,4 +133,5 @@
 .enrollment-page .enrollment-note p{max-width:600px;margin:7px 0 0;line-height:1.65}
 .enrollment-page #submit-interest{background:linear-gradient(135deg,#279b39,#188329);box-shadow:0 8px 20px rgba(26,133,43,.22)}
 .enrollment-page #submit-interest:hover{background:#147323;box-shadow:0 10px 24px rgba(26,133,43,.27)}
+.enrollment-page .success-warning{margin-top:20px;padding:14px 16px;border-left:4px solid #d49a20;border-radius:0 10px 10px 0;background:#fff8e6;color:#6b531a;text-align:left}
 @media(max-width:480px){.enrollment-page .class-summary{margin-top:26px;padding:19px 18px}.enrollment-page .class-summary-meta{align-items:flex-start;flex-direction:column;gap:3px}.enrollment-page .class-summary-meta span+span::before{display:none}.enrollment-page .enrollment-note{margin-top:28px}}
